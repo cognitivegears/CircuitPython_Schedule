@@ -44,12 +44,10 @@ Usage:
 [3] https://adam.herokuapp.com/past/2010/6/30/replace_cron_with_clockwork/
 """
 import adafruit_datetime as datetime
-import adafruit_logging as logging
 import random
 import re
 import time
 
-logger = logging.getLogger("schedule")
 
 
 class ScheduleError(Exception):
@@ -112,11 +110,6 @@ class Scheduler(object):
 
         :param delay_seconds: A delay added between every executed job
         """
-        logger.debug(
-            "Running *all* %i jobs with %is delay in between",
-            len(self.jobs),
-            delay_seconds,
-        )
         for job in self.jobs[:]:
             self._run_job(job)
             time.sleep(delay_seconds)
@@ -143,10 +136,8 @@ class Scheduler(object):
                     jobs to delete
         """
         if tag is None:
-            logger.debug("Deleting *all* jobs")
             del self.jobs[:]
         else:
-            logger.debug('Deleting all jobs tagged "%s"', tag)
             self.jobs[:] = (job for job in self.jobs if tag not in job.tags)
 
     def cancel_job(self, job: "Job") -> None:
@@ -156,10 +147,9 @@ class Scheduler(object):
         :param job: The job to be unscheduled
         """
         try:
-            logger.debug('Cancelling job "%s"', str(job))
             self.jobs.remove(job)
         except ValueError:
-            logger.debug('Cancelling not-scheduled job "%s"', str(job))
+            pass
 
     def every(self, interval: int = 1) -> "Job":
         """
@@ -655,16 +645,13 @@ class Job(object):
 
         """
         if self._is_overdue(datetime.datetime.now()):
-            logger.debug("Cancelling job %s", self)
             return CancelJob
 
-        logger.debug("Running job %s", self)
         ret = self.job_func()
         self.last_run = datetime.datetime.now()
         self._schedule_next_run()
 
         if self._is_overdue(self.next_run):
-            logger.debug("Cancelling job %s", self)
             return CancelJob
         return ret
 

@@ -38,7 +38,6 @@ setup(
     install_requires=[
         "Adafruit-Blinka",
         "adafruit-circuitpython-datetime",
-        "adafruit-circuitpython-logging",
     ],
     # Choose your license
     license="MIT",
