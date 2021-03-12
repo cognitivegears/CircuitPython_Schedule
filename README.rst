@@ -24,8 +24,8 @@ Introduction
 Reduced version of the schedule library for CircuitPython
 
 This library is a reduced version of the Python `schedule
-library<https://pypi.org/project/schedule/>`. Credit to `Dan Bader
-(dbader)<https://dbader.org/>` for
+library<https://pypi.org/project/schedule/>`_. Credit to `Dan Bader
+(dbader)<https://dbader.org/>`_ for
 this excellent library.
 
 
