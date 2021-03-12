@@ -4,5 +4,5 @@
 # SPDX-License-Identifier: MIT
 
 Adafruit-Blinka
-adafruit-datetime
-adafruit-logging
+adafruit-circuitpython-datetime
+adafruit-circuitpython-logging
