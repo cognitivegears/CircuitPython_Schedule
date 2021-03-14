@@ -53,8 +53,7 @@ setup(
         "Programming Language :: Python :: 3.5",
     ],
     # What does your project relate to?
-    keywords="adafruit blinka circuitpython micropython uschedule schedule time date calendar "
-             "cron scheduling repeat scheduler datetime",
+    keywords="adafruit blinka circuitpython micropython uschedule schedule time date calendar cron scheduling repeat scheduler datetime",
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
     # TODO: IF LIBRARY FILES ARE A PACKAGE FOLDER,

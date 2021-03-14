@@ -43,40 +43,39 @@ Usage:
 [2] https://github.com/Rykian/clockwork
 [3] https://adam.herokuapp.com/past/2010/6/30/replace_cron_with_clockwork/
 """
-import adafruit_datetime as datetime
 import random
 import re
 import time
+import adafruit_datetime as datetime
 
+# Needed for compatibility with parent module - changing any of these
+# would change the module syntax.
+# pylint: disable=too-many-branches
+# pylint: disable=too-many-instance-attributes
+# pylint: disable=too-many-public-methods
+# pylint: disable=no-self-use
 
 
 class ScheduleError(Exception):
     """Base schedule exception"""
 
-    pass
-
 
 class ScheduleValueError(ScheduleError):
     """Base schedule value error"""
-
-    pass
 
 
 class IntervalError(ScheduleValueError):
     """An improper interval was used"""
 
-    pass
 
-
-class CancelJob(object):
+# pylint: disable=too-few-public-methods
+class CancelJob:
     """
     Can be returned from a job to unschedule itself.
     """
 
-    pass
 
-
-class Scheduler(object):
+class Scheduler:
     """
     Objects instantiated by the :class:`Scheduler <Scheduler>` are
     factories to create jobs, keep record of scheduled jobs and
@@ -124,8 +123,8 @@ class Scheduler(object):
         """
         if tag is None:
             return self.jobs[:]
-        else:
-            return [job for job in self.jobs if tag in job.tags]
+        # else
+        return [job for job in self.jobs if tag in job.tags]
 
     def clear(self, tag=None) -> None:
         """
@@ -190,7 +189,7 @@ class Scheduler(object):
         return (self.next_run - datetime.datetime.now()).total_seconds()
 
 
-class Job(object):
+class Job:
     """
     A periodic job as used by :class:`Scheduler`.
 
@@ -219,7 +218,7 @@ class Job(object):
         # optional time at which this job runs
         self.at_time = None
 
-        # datetime of the last run
+        # datetime of the last runno-self-use
         self.last_run = None
 
         # datetime of the next run
@@ -259,12 +258,8 @@ class Job(object):
         )
 
     def __repr__(self):
-        def format_time(t):
-            # return t.strftime("%Y-%m-%d %H:%M:%S") if t else "[never]"
-            return t.isoformat() if t else "[never]"
-
-        def is_repr(j):
-            return not isinstance(j, Job)
+        def format_time(time_value):
+            return time_value.isoformat() if time_value else "[never]"
 
         timestats = "(last run: %s, next run: %s)" % (
             format_time(self.last_run),
@@ -275,8 +270,6 @@ class Job(object):
             job_func_name = self.job_func.__name__
         else:
             job_func_name = repr(self.job_func)
-        # args = [repr(x) if is_repr(x) else str(x) for x in self.job_func.args]
-        # kwargs = ["%s=%s" % (k, repr(v)) for k, v in self.job_func.keywords.items()]
         args = []
         kwargs = []
         call_repr = job_func_name + "(" + ", ".join(args + kwargs) + ")"
@@ -289,78 +282,157 @@ class Job(object):
                 call_repr,
                 timestats,
             )
-        else:
-            fmt = (
-                "Every %(interval)s "
-                + ("to %(latest)s " if self.latest is not None else "")
-                + "%(unit)s do %(call_repr)s %(timestats)s"
-            )
+        # else:
+        fmt = (
+            "Every %(interval)s "
+            + ("to %(latest)s " if self.latest is not None else "")
+            + "%(unit)s do %(call_repr)s %(timestats)s"
+        )
 
-            return fmt % dict(
-                interval=self.interval,
-                latest=self.latest,
-                unit=(self.unit[:-1] if self.interval == 1 else self.unit),
-                call_repr=call_repr,
-                timestats=timestats,
-            )
+        return fmt % dict(
+            interval=self.interval,
+            latest=self.latest,
+            unit=(self.unit[:-1] if self.interval == 1 else self.unit),
+            call_repr=call_repr,
+            timestats=timestats,
+        )
 
     @property
     def second(self):
+        """Specify the type of an interval as a single second.
+        Only works if the interval is set to 1
+
+        Raises:
+            IntervalError: Thrown if the interval is not 1
+
+        Returns:
+            uschedule: Returns self
+        """
         if self.interval != 1:
             raise IntervalError("Use seconds instead of second")
         return self.seconds
 
     @property
     def seconds(self):
+        """Specify the type of an interval as seconds.
+
+        Returns:
+            uschedule: Returns self
+        """
         self.unit = "seconds"
         return self
 
     @property
     def minute(self):
+        """Specify the type of an interval as minute.
+        Only works if the interval is set to 1
+
+        Raises:
+            IntervalError: Thrown if the interval is not 1
+
+        Returns:
+            uschedule: Returns self
+        """
         if self.interval != 1:
             raise IntervalError("Use minutes instead of minute")
         return self.minutes
 
     @property
     def minutes(self):
+        """Specify the type of an interval as minutes.
+
+        Returns:
+            uschedule: Returns self
+        """
         self.unit = "minutes"
         return self
 
     @property
     def hour(self):
+        """Specify the type of an interval as hour.
+        Only works if the interval is set to 1
+
+        Raises:
+            IntervalError: Thrown if the interval is not 1
+
+        Returns:
+            uschedule: Returns self
+        """
         if self.interval != 1:
             raise IntervalError("Use hours instead of hour")
         return self.hours
 
     @property
     def hours(self):
+        """Specify the type of an interval as hours.
+
+        Returns:
+            uschedule: Returns self
+        """
         self.unit = "hours"
         return self
 
     @property
     def day(self):
+        """Specify the type of an interval as day.
+        Only works if the interval is set to 1
+
+        Raises:
+            IntervalError: Thrown if the interval is not 1
+
+        Returns:
+            uschedule: Returns self
+        """
         if self.interval != 1:
             raise IntervalError("Use days instead of day")
         return self.days
 
     @property
     def days(self):
+        """Specify the type of an interval as days.
+
+        Returns:
+            uschedule: Returns self
+        """
         self.unit = "days"
         return self
 
     @property
     def week(self):
+        """Specify the type of an interval as week
+        Only works if the interval is set to 1
+
+        Raises:
+            IntervalError: Thrown if the interval is not 1
+
+        Returns:
+            uschedule: self
+        """
         if self.interval != 1:
             raise IntervalError("Use weeks instead of week")
         return self.weeks
 
     @property
     def weeks(self):
+        """Specify the type of an interval as weeks
+
+        Returns:
+            uschedule: Returns self
+        """
         self.unit = "weeks"
         return self
 
     @property
     def monday(self):
+        """Set the target day of the week as Monday.
+        Only works for weekly jobs.
+
+        Raises:
+            IntervalError: Thrown if interval is not weekly
+
+        Returns:
+            uschedule: Returns self
+        """
         if self.interval != 1:
             raise IntervalError(
                 "Scheduling .monday() jobs is only allowed for weekly jobs. "
@@ -372,6 +444,15 @@ class Job(object):
 
     @property
     def tuesday(self):
+        """Set the target day of the week as Tuesday.
+        Only works for weekly jobs.
+
+        Raises:
+            IntervalError: Thrown if interval is not weekly
+
+        Returns:
+            uschedule: Returns self
+        """
         if self.interval != 1:
             raise IntervalError(
                 "Scheduling .tuesday() jobs is only allowed for weekly jobs. "
@@ -383,6 +464,15 @@ class Job(object):
 
     @property
     def wednesday(self):
+        """Set the target day of the week as Wednesday
+        Only works for weekly jobs.
+
+        Raises:
+            IntervalError: Thrown if interval is not weekly
+
+        Returns:
+            uschedule: Returns self
+        """
         if self.interval != 1:
             raise IntervalError(
                 "Scheduling .wednesday() jobs is only allowed for weekly jobs. "
@@ -394,6 +484,15 @@ class Job(object):
 
     @property
     def thursday(self):
+        """Set the target day of the week as Thursday.
+        Only works for weekly jobs.
+
+        Raises:
+            IntervalError: Thrown if interval is not weekly
+
+        Returns:
+            uschedule: Returns self
+        """
         if self.interval != 1:
             raise IntervalError(
                 "Scheduling .thursday() jobs is only allowed for weekly jobs. "
@@ -405,6 +504,15 @@ class Job(object):
 
     @property
     def friday(self):
+        """Set the target day of the week as Friday.
+        Only works for weekly jobs.
+
+        Raises:
+            IntervalError: Thrown if interval is not weekly
+
+        Returns:
+            uschedule: Returns self
+        """
         if self.interval != 1:
             raise IntervalError(
                 "Scheduling .friday() jobs is only allowed for weekly jobs. "
@@ -416,6 +524,15 @@ class Job(object):
 
     @property
     def saturday(self):
+        """Set the target day of the week as Saturday.
+        Only works for weekly jobs.
+
+        Raises:
+            IntervalError: Thrown if interval is not weekly
+
+        Returns:
+            uschedule: Returns self
+        """
         if self.interval != 1:
             raise IntervalError(
                 "Scheduling .saturday() jobs is only allowed for weekly jobs. "
@@ -427,6 +544,15 @@ class Job(object):
 
     @property
     def sunday(self):
+        """Set the target day of the week as Sunday.
+        Only works for weekly jobs.
+
+        Raises:
+            IntervalError: Thrown if interval is not weekly
+
+        Returns:
+            uschedule: Returns self
+        """
         if self.interval != 1:
             raise IntervalError(
                 "Scheduling .sunday() jobs is only allowed for weekly jobs. "
@@ -448,6 +574,7 @@ class Job(object):
         self.tags.update(tags)
         return self
 
+    # pylint: disable=invalid-name
     def at(self, time_str):
         """
         Specify a particular time that the job should be run at.
@@ -496,7 +623,7 @@ class Job(object):
             hour = 0
             minute = 0
             _, second = time_values
-        elif len(time_values) == 2 and self.unit == "hours" and len(time_values[0]):
+        elif len(time_values) == 2 and self.unit == "hours" and time_values[0]:
             hour = 0
             minute, second = time_values
         else:
@@ -504,7 +631,7 @@ class Job(object):
             second = 0
         if self.unit == "days" or self.start_day:
             hour = int(hour)
-            if not (0 <= hour <= 23):
+            if not 0 <= hour <= 23:
                 raise ScheduleValueError(
                     "Invalid number of hours ({} is not between 0 and 23)"
                 )
@@ -533,10 +660,7 @@ class Job(object):
         self.latest = latest
         return self
 
-    def until(
-        self,
-        until_time
-    ):
+    def until(self, until_time):
         """
         Schedule job to run until the specified moment.
 
@@ -571,25 +695,7 @@ class Job(object):
                 datetime.datetime.now(), until_time
             )
         elif isinstance(until_time, str):
-            cancel_after = self._decode_datetimestr(
-                until_time,
-                [
-                    "%Y-%m-%d %H:%M:%S",
-                    "%Y-%m-%d %H:%M",
-                    "%Y-%m-%d",
-                    "%H:%M:%S",
-                    "%H:%M",
-                ],
-            )
-            if cancel_after is None:
-                raise ScheduleValueError("Invalid string format for until()")
-            if "-" not in until_time:
-                # the until_time is a time-only format. Set the date to today
-                now = datetime.datetime.now()
-                cancel_after = cancel_after.replace(
-                    year=now.year, month=now.month, day=now.day
-                )
-            self.cancel_after = cancel_after
+            raise ScheduleValueError("String format not supported in uschedule")
         else:
             raise TypeError(
                 "until() takes a string, datetime.datetime, datetime.timedelta, "
@@ -601,6 +707,7 @@ class Job(object):
             )
         return self
 
+    # pylint: disable=unused-argument
     def do(self, job_func, *args, **kwargs):
         """
         Specifies the job_func that should be called every time the
@@ -666,7 +773,7 @@ class Job(object):
             )
 
         if self.latest is not None:
-            if not (self.latest >= self.interval):
+            if not self.latest >= self.interval:
                 raise ScheduleError("`latest` is greater than `interval`")
             interval = random.randint(self.interval, self.latest)
         else:
@@ -732,16 +839,6 @@ class Job(object):
 
     def _is_overdue(self, when: datetime.datetime):
         return self.cancel_after is not None and when > self.cancel_after
-
-    def _decode_datetimestr(
-        self, datetime_str: str, formats
-    ):
-        for f in formats:
-            try:
-                return datetime.datetime.strptime(datetime_str, f)
-            except ValueError:
-                pass
-        return None
 
 
 # The following methods are shortcuts for not having to
