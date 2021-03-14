@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: Copyright (c) 2013-2021 Daniel Bader
+# SPDX-FileCopyrightText: Copyright (c) 2021 Nathan Byrd
+#
+# SPDX-License-Identifier: MIT
+
 """
 Reduced version of the schedule library for CircuitPython
 
