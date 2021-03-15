@@ -71,9 +71,22 @@ To install in a virtual environment in your current project:
 Usage Example
 =============
 
-.. literalinclude:: ../examples/uschedule_simpletest.py
-    :caption: examples/uschedule_simpletest.py
-    :linenos:
+.. code-block:: python
+
+    import time
+    import uschedule as schedule
+
+    def greet():
+        print("Hello, world!")
+
+    schedule.every(10).seconds.do(greet)
+
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+    python3 -m venv .env
+
+
 
 Contributing
 ============
