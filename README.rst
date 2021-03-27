@@ -79,6 +79,7 @@ Usage Example
     def greet():
         print("Hello, world!")
 
+    """ Note: pass the function name, like greet, not greet():
     schedule.every(10).seconds.do(greet)
 
     while True:
@@ -98,5 +99,9 @@ before contributing to help this project stay welcoming.
 Documentation
 =============
 
-For information on building library documentation, please check out
-`this guide <https://learn.adafruit.com/creating-and-sharing-a-circuitpython-library/sharing-our-docs-on-readthedocs#sphinx-5-1>`_.
+Read the `module documentation`__.
+
+.. _moduledocumentation: https://circuitpython-uschedule.readthedocs.io/
+
+__ moduledocumentation_
+

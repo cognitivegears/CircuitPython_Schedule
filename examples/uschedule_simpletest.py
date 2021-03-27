@@ -11,6 +11,8 @@ def greet():
     print("Hello, world!")
 
 
+# Note: pass functions, not function calls - i.e. "greet", not "greet()"
+
 # schedule every 10 seconds
 schedule.every(10).seconds.do(greet)
 

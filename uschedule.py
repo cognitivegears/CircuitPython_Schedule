@@ -723,9 +723,16 @@ class Job:
 
         NOTE: This version does not support arguments
 
-        :param job_func: The function to be scheduled
+        :param job_func: The function to be scheduled. This should be a callable
+            function name, not a call. i.e. "greet", not "greet()"
         :return: The invoked job instance
         """
+        if not callable(job_func):
+            raise ScheduleValueError(
+                "Job function is not callable. "
+                "Did you pass 'job_func()' instead of 'job_func'?"
+            )
+
         self.job_func = job_func
         self._schedule_next_run()
         if self.scheduler is None:
