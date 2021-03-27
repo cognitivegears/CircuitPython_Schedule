@@ -81,13 +81,12 @@ Usage Example
     def greet():
         print("Hello, world!")
 
-    """ Note: pass the function name, like greet, not greet():
+    """ Note: pass the function name, like greet, not greet():"""
     schedule.every(10).seconds.do(greet)
 
     while True:
         schedule.run_pending()
         time.sleep(1)
-    python3 -m venv .env
 
 
 
