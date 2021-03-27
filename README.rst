@@ -104,4 +104,3 @@ Read the `module documentation`__.
 .. _moduledocumentation: https://circuitpython-uschedule.readthedocs.io/
 
 __ moduledocumentation_
-
