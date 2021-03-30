@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: MIT
 
 import time
-import uschedule as schedule
+import circuitpython_schedule as schedule
 
 
 def greet():

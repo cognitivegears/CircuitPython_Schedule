@@ -4,14 +4,20 @@
 # SPDX-License-Identifier: MIT
 
 import time
-import uschedule as schedule
+import rtc
+import busio
+import board
+import adafruit_pcf8523
+import circuitpython_schedule as schedule
 
 
 def greet():
     print("Hello, world!")
 
 
-# Note: pass functions, not function calls - i.e. "greet", not "greet()"
+i2c = busio.I2C(board.SCL, board.SDA)
+rtc_device = adafruit_pcf8523.PCF8523(i2c)
+rtc.RTC().datetime = rtc_device.datetime
 
 # schedule every 10 seconds
 schedule.every(10).seconds.do(greet)

@@ -2,8 +2,8 @@ Introduction
 ============
 
 
-.. image:: https://readthedocs.org/projects/circuitpython-uschedule/badge/?version=latest
-    :target: https://circuitpython-uschedule.readthedocs.io/
+.. image:: https://readthedocs.org/projects/circuitpython-schedule/badge/?version=latest
+    :target: https://circuitpython-schedule.readthedocs.io/
     :alt: Documentation Status
 
 
@@ -12,8 +12,8 @@ Introduction
     :alt: Discord
 
 
-.. image:: https://github.com/cognitivegears/CircuitPython_uschedule/workflows/Build%20CI/badge.svg
-    :target: https://github.com/cognitivegears/CircuitPython_uschedule/actions
+.. image:: https://github.com/cognitivegears/CircuitPython_Schedule/workflows/Build%20CI/badge.svg
+    :target: https://github.com/cognitivegears/CircuitPython_Schedule/actions
     :alt: Build Status
 
 
@@ -46,18 +46,18 @@ or individual libraries can be installed using
 
 
 On supported GNU/Linux systems like the Raspberry Pi, you can install the driver locally `from
-PyPI <https://pypi.org/project/adafruit-circuitpython-uschedule/>`_.
+PyPI <https://pypi.org/project/circuitpython-schedule/>`_.
 To install for current user:
 
 .. code-block:: shell
 
-    pip3 install adafruit-circuitpython-uschedule
+    pip3 install circuitpython-schedule
 
 To install system-wide (this may be required in some cases):
 
 .. code-block:: shell
 
-    sudo pip3 install adafruit-circuitpython-uschedule
+    sudo pip3 install circuitpython-schedule
 
 To install in a virtual environment in your current project:
 
@@ -66,7 +66,7 @@ To install in a virtual environment in your current project:
     mkdir project-name && cd project-name
     python3 -m venv .env
     source .env/bin/activate
-    pip3 install adafruit-circuitpython-uschedule
+    pip3 install circuitpython-schedule
 
 
 
@@ -76,7 +76,7 @@ Usage Example
 .. code-block:: python
 
     import time
-    import uschedule as schedule
+    import circuitpython-schedule as schedule
 
     def greet():
         print("Hello, world!")
@@ -94,7 +94,7 @@ Contributing
 ============
 
 Contributions are welcome! Please read our `Code of Conduct
-<https://github.com/cognitivegears/CircuitPython_uschedule/blob/main/CODE_OF_CONDUCT.md>`_
+<https://github.com/cognitivegears/CircuitPython_Schedule/blob/main/CODE_OF_CONDUCT.md>`_
 before contributing to help this project stay welcoming.
 
 Documentation
@@ -102,6 +102,6 @@ Documentation
 
 Read the `module documentation`__.
 
-.. _moduledocumentation: https://circuitpython-uschedule.readthedocs.io/
+.. _moduledocumentation: https://circuitpython-schedule.readthedocs.io/
 
 __ moduledocumentation_

@@ -45,7 +45,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = " CircuitPython uschedule Library"
+project = " CircuitPython schedule Library"
 copyright = "2021 Nathan Byrd"
 author = "Nathan Byrd"
 
@@ -127,7 +127,7 @@ html_static_path = ["_static"]
 html_favicon = "_static/favicon.ico"
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "CircuitPython_UscheduleLibrarydoc"
+htmlhelp_basename = "CircuitPython_ScheduleLibrarydoc"
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -148,8 +148,8 @@ latex_elements = {
 latex_documents = [
     (
         master_doc,
-        "CircuitPython_uscheduleLibrary.tex",
-        "CircuitPython uschedule Library Documentation",
+        "CircuitPython_ScheduleLibrary.tex",
+        "CircuitPython Schedule Library Documentation",
         author,
         "manual",
     ),
@@ -162,8 +162,8 @@ latex_documents = [
 man_pages = [
     (
         master_doc,
-        "CircuitPython_uscheduleLibrary",
-        "CircuitPython uschedule Library Documentation",
+        "CircuitPython_ScheduleLibrary",
+        "CircuitPython Schedule Library Documentation",
         [author],
         1,
     ),
@@ -177,11 +177,11 @@ man_pages = [
 texinfo_documents = [
     (
         master_doc,
-        "CircuitPython_uscheduleLibrary",
-        "CircuitPython uschedule Library Documentation",
+        "CircuitPython_ScheduleLibrary",
+        "CircuitPython Schedule Library Documentation",
         author,
-        "CircuitPython_uscheduleLibrary",
-        "One line description of project.",
+        "CircuitPython_ScheduleLibrary",
+        "Schedule library implementation for CircuitPython",
         "Miscellaneous",
     ),
 ]

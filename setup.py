@@ -24,14 +24,14 @@ with open(path.join(here, "README.rst"), encoding="utf-8") as f:
 
 setup(
     # Community Bundle Information
-    name="circuitpython-uschedule",
+    name="circuitpython-schedule",
     use_scm_version=True,
     setup_requires=["setuptools_scm"],
     description="Reduced version of the schedule library for CircuitPython",
     long_description=long_description,
     long_description_content_type="text/x-rst",
     # The project's main homepage.
-    url="https://github.com/cognitivegears/CircuitPython_uschedule.git",
+    url="https://github.com/cognitivegears/CircuitPython_Schedule.git",
     # Author details
     author="Nathan Byrd",
     author_email="",
@@ -58,5 +58,5 @@ setup(
     # simple. Or you can use find_packages().
     # TODO: IF LIBRARY FILES ARE A PACKAGE FOLDER,
     #       CHANGE `py_modules=['...']` TO `packages=['...']`
-    py_modules=["uschedule"],
+    py_modules=["circuitpython_schedule"],
 )

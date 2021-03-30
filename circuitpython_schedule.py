@@ -29,7 +29,7 @@ Features:
     - Tested on Python 3.6, 3.7, 3.8, 3.9
 
 Usage:
-    >>> import uschedule as schedule
+    >>> import circuitpython_schedule as schedule
     >>> import time
 
     >>> def job():
@@ -311,7 +311,7 @@ class Job:
             IntervalError: Thrown if the interval is not 1
 
         Returns:
-            uschedule: Returns self
+            circuitpython_schedule: Returns self
         """
         if self.interval != 1:
             raise IntervalError("Use seconds instead of second")
@@ -322,7 +322,7 @@ class Job:
         """Specify the type of an interval as seconds.
 
         Returns:
-            uschedule: Returns self
+            circuitpython_schedule: Returns self
         """
         self.unit = "seconds"
         return self
@@ -336,7 +336,7 @@ class Job:
             IntervalError: Thrown if the interval is not 1
 
         Returns:
-            uschedule: Returns self
+            circuitpython_schedule: Returns self
         """
         if self.interval != 1:
             raise IntervalError("Use minutes instead of minute")
@@ -347,7 +347,7 @@ class Job:
         """Specify the type of an interval as minutes.
 
         Returns:
-            uschedule: Returns self
+            circuitpython_schedule: Returns self
         """
         self.unit = "minutes"
         return self
@@ -361,7 +361,7 @@ class Job:
             IntervalError: Thrown if the interval is not 1
 
         Returns:
-            uschedule: Returns self
+            circuitpython_schedule: Returns self
         """
         if self.interval != 1:
             raise IntervalError("Use hours instead of hour")
@@ -372,7 +372,7 @@ class Job:
         """Specify the type of an interval as hours.
 
         Returns:
-            uschedule: Returns self
+            circuitpython_schedule: Returns self
         """
         self.unit = "hours"
         return self
@@ -386,7 +386,7 @@ class Job:
             IntervalError: Thrown if the interval is not 1
 
         Returns:
-            uschedule: Returns self
+            circuitpython_schedule: Returns self
         """
         if self.interval != 1:
             raise IntervalError("Use days instead of day")
@@ -397,7 +397,7 @@ class Job:
         """Specify the type of an interval as days.
 
         Returns:
-            uschedule: Returns self
+            circuitpython_schedule: Returns self
         """
         self.unit = "days"
         return self
@@ -411,7 +411,7 @@ class Job:
             IntervalError: Thrown if the interval is not 1
 
         Returns:
-            uschedule: self
+            circuitpython_schedule: self
         """
         if self.interval != 1:
             raise IntervalError("Use weeks instead of week")
@@ -422,7 +422,7 @@ class Job:
         """Specify the type of an interval as weeks
 
         Returns:
-            uschedule: Returns self
+            circuitpython_schedule: Returns self
         """
         self.unit = "weeks"
         return self
@@ -436,7 +436,7 @@ class Job:
             IntervalError: Thrown if interval is not weekly
 
         Returns:
-            uschedule: Returns self
+            circuitpython_schedule: Returns self
         """
         if self.interval != 1:
             raise IntervalError(
@@ -456,7 +456,7 @@ class Job:
             IntervalError: Thrown if interval is not weekly
 
         Returns:
-            uschedule: Returns self
+            circuitpython_schedule: Returns self
         """
         if self.interval != 1:
             raise IntervalError(
@@ -476,7 +476,7 @@ class Job:
             IntervalError: Thrown if interval is not weekly
 
         Returns:
-            uschedule: Returns self
+            circuitpython_schedule: Returns self
         """
         if self.interval != 1:
             raise IntervalError(
@@ -496,7 +496,7 @@ class Job:
             IntervalError: Thrown if interval is not weekly
 
         Returns:
-            uschedule: Returns self
+            circuitpython_schedule: Returns self
         """
         if self.interval != 1:
             raise IntervalError(
@@ -516,7 +516,7 @@ class Job:
             IntervalError: Thrown if interval is not weekly
 
         Returns:
-            uschedule: Returns self
+            circuitpython_schedule: Returns self
         """
         if self.interval != 1:
             raise IntervalError(
@@ -536,7 +536,7 @@ class Job:
             IntervalError: Thrown if interval is not weekly
 
         Returns:
-            uschedule: Returns self
+            circuitpython_schedule: Returns self
         """
         if self.interval != 1:
             raise IntervalError(
@@ -556,7 +556,7 @@ class Job:
             IntervalError: Thrown if interval is not weekly
 
         Returns:
-            uschedule: Returns self
+            circuitpyhon_schedule: Returns self
         """
         if self.interval != 1:
             raise IntervalError(
@@ -700,7 +700,7 @@ class Job:
                 datetime.datetime.now(), until_time
             )
         elif isinstance(until_time, str):
-            raise ScheduleValueError("String format not supported in uschedule")
+            raise ScheduleValueError("String format not supported")
         else:
             raise TypeError(
                 "until() takes a string, datetime.datetime, datetime.timedelta, "
