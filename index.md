@@ -1,37 +1,22 @@
-## Welcome to GitHub Pages
+## CircuitPython Schedule
 
-You can use the [editor on GitHub](https://github.com/cognitivegears/CircuitPython_Schedule/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+The CircuitPython_Schedule module is based on the excellent [schedule](https://pypi.org/project/schedule/) CPython module by [Dan Bader](https://pypi.org/user/dbader/), modified for CircuitPython by [Nathan Byrd](https://github.com/cognitivegears).  This open-source module facilitates the execution of functions on fixed time schedules. This is particularly useful in CircuitPython for use cases involving time-based activities; some activities could include watering plants, turning on/off lights, periodically logging data or sending reminders, among many others. The library uses a Domain Specific Language (DSL) to allow for flexible scheduling options at execution time.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Installation
 
-### Markdown
+CircuitPython_Schedule is part of the [Adafruit CircuitPython Community Bundle](https://github.com/adafruit/CircuitPython_Community_Bundle). It is located in the bundle at `libraries/helpers/schedule`. For instructions on how to install a library in CircuitPython, see [CircuitPython Libraries](https://learn.adafruit.com/welcome-to-circuitpython/circuitpython-libraries)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+### More Information
 
-- Bulleted
-- List
+* [CircuitPython-Schedule on PyPi](https://pypi.org/project/circuitpython-schedule/)
+* [CircuitPython-Schedule GitHub page](https://github.com/cognitivegears/CircuitPython_Schedule)
 
-1. Numbered
-2. List
+### Documentation
 
-**Bold** and _Italic_ and `Code` text
+For full information on using the library, see the [Documentation at ReadTheDocs](https://circuitpython-schedule.readthedocs.io/en/latest/)
 
-[Link](url) and ![Image](src)
-```
+### Contributing
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/cognitivegears/CircuitPython_Schedule/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Contributions are always welcome. Feel free to open an [Issue](https://github.com/cognitivegears/CircuitPython_Schedule/issues) or create a [Pull Request](https://github.com/cognitivegears/CircuitPython_Schedule/pulls) with any changes. All code (original and CircuitPython version) are under the [MIT license](https://github.com/cognitivegears/CircuitPython_Schedule/blob/main/LICENSE).
