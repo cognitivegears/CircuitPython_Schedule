@@ -76,7 +76,7 @@ Usage Example
 .. code-block:: python
 
     import time
-    import circuitpython-schedule as schedule
+    import circuitpython_schedule as schedule
 
     def greet():
         print("Hello, world!")
